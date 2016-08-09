@@ -11,3 +11,69 @@ first_twice = first * 2       #'tttttttt'
 
 #调试
 #程序错误包含：syntax error（语法错误）; runtime error（运行错误）; semantic error（语义错误）
+
+
+import turtle              #for paint, the object will write dowm line
+
+bob = turtle.Turtle()      #build a turtle object
+bob.fd(100)            
+#fd-forword, bk-back + length; lt-left, rt-right + angle.
+
+def square(t):
+    for i in range(4):
+        t.fd(100)
+        t.lt(90)
+        
+square(bob)         #将所有的代码封装（encapsulation)在一个函数中
+
+def square(t,length):
+    for i in range(4):
+        t.fd(length)
+        t.lt
+
+#buil a function can use any length-----泛化（generalization)
+
+def polygon(t,n,length):
+    angle = 360/ n
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+        
+#build a function which can paint Arbitrary polygon
+
+import math
+def circle(t,r):
+    circumference = 2 * math.pi * r
+    n = int (citcumference/3) +1
+    length = circumference/n
+    polygon(t,n,length)
+    
+def polylin(t,n, length, angle):
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+        
+def polygon(t,n,length):
+    angle = 360.0/n
+    polyline(t,n,length,angle)
+    
+def arc(t,r,angle):
+    arc_length = 2*math.pi*r*angle/360.0
+    n = int(arc_length/3)+1
+    step_length = arc_length/n
+    step_angle = float(angle)/n
+    polyline(t,n,step_length,step_angle)
+    
+def circle(t,r):
+    arc(t,r,360)
+    
+'''
+开发方案（development plan）
+①写一个没有函数定义的小程序开始
+②一旦该程序正常运行，找出其中相关性强的部分，将它们封装进一个函数并给它一个名字
+③通过增加适当参数，泛化改函数
+④重复1~3步，
+⑤寻找机会通过重构改进程序
+'''
+
+
