@@ -127,6 +127,124 @@ while语句执行流程
 这种形式的流程叫做循环（loop）
 
 
+#string
+#string is a sequence
+'banana'[1]  # a
+len('banana') # 6, but index is 0~5
+#string can not change, it's immutable
+greeting = 'Hello' 
+#greeting[0] = 'J'   -- TypeError
+
+greeting.find('l') # if finded, return the
+#index, else return -1, can coordinate 
+# with in
+
+#when word compares another word, if 
+#formor word is initials letter capitalization
+a = 'banana'
+c = 'pine'
+b = 'Pine'
+# b > a > c
+
+#string methods
+a = 'banana' # a is a string
+b = 'Baby'
+b.casefold()    #'baby'  lower case the leter
+a.count('a')   # 3
+a.encode('utf-8') #解码
+a.endswith('n')   #return False
+c = '123\t342\t234'
+c.expandtabs()  # 
+#str.isalnum()
+#str.isdecimal()
+#str.isdigit()
+#str.islower()
+#str.isnummer()
+#str.isalpha()
+
+c = 'AA'
+d = 'abc'
+d.join(c)  # 'aAAbAAc'
+
+#a.lstrip()
+#a.rstrip()
+a.strip()
+
+a.split(sep = None, maxsplit = 1)
+a.splitlines()
+a.title # 'Baby' 将所有单词首字母大写
+f = '42'
+f.zfill(5) # '00042'用0来填充宽度
+
+#文件打开
+fin = open('words.txt')  #文件名带后缀
+for line in fin:
+    word = line.strip()
+    print(word)
+fin.close()
+
+
+#调试
+#选择一组可以测试所有可能的单词集合，介于
+#困难和不可能中间
+#空字符串是一个特殊用例（special case)
+
+
+#列表
+#列表是由多个值组成的序列。在列表中，它可以
+#存储任何数据类型，值称为元素或者项
+#一个列表在另一个列表中，称为“嵌套列表”
+#列表是可变的
+#列表中可用in
+# + 运算符可拼接多个列表
+# * 重复多个列表
+#增量赋值语句  total += x   ===  total = total + x
+def capitalize_all(t):
+    res = []
+    for s in t:
+        res.append(s.capitalize())
+    return res
+    #映射（map)
+
+t = ['a','b','c']
+x = t.pop(1)  # pop修改列表，并返回被移除的元素
+#若不提供下标，将默认移除并返回最后一个元素
+
+#若不要被移除的运算
+del t[1]
+
+t.remove('b')  #知道要删除的值，不知道其下标
+
+s = 'spam'
+r = list(s)    # r == ['s','p','a','m'] 
+#list将一各字符串转换为字符的列表
+#list将字符串分割成单独的字符
+#若想将字符串分割成一些单词，用split
+s = 'pining for the job'
+t = s.split()   #['pining', 'for', 'the', 'job']
+s = 'spam-spam-spam'
+delimiter = '-'
+t = s.split(delimiter) # ['spam', 'spam', 'spam']
+#如果要再连接起来，用join
+s = delimiter.join(t)
+
+#列表相等不一定相同
+#如果一个对象有多于一个的引用，我们称这个对象
+#是有别名的，如果一个有别名的对象是可变的
+s.append(3) # 添加元素并返回None
+
+#列表调试
+'''
+大多数的列表方法会对参数进行修改，然后返回None，
+在使用list方法和操作符前，可以仔细阅读文档，
+然后在交互模式下测试
+选择一种写法，坚持下去，比如，删除一个元素可以用
+pop，remove,del
+通过创建拷贝来避免别名
+t2 = t[:]
+t3 = sorted(t) #将t中元素按从小到大排列
+
+
 
 
 
