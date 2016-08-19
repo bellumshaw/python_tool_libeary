@@ -245,6 +245,288 @@ t2 = t[:]
 t3 = sorted(t) #将t中元素按从小到大排列
 
 
+# 字典
+'''
+字典包含一个索引的集合，被称为键（keys）。和
+一个值（values）的集合。一个键对应一个值。这
+中一一对应的关联被称为键值对，有时也被称作项。
+字典表示的是从键到值的映射。
+'''
+eng = dict() # build a dict
+eng2 = {}    # equal to 
+eng['one'] = 'uno'   #add the key and value
+#字典中的顺序是不可知的
+len(eng)   # return the key-value 的对数
+'one' in eng # return True or False ，表示是否存在
+vals = eng.values() # accept all values in dict
+'''
+python使用一种叫做哈希表的算法：无论字典中有多少项
+in运算符搜索所需要的时间都是一样的
+而字典的键必须是可哈希，其必要特质为不可变，所以list,dict
+都不可以作为键值
+'''
+eng.get('a',0)  #get方法，接受一个键和一个默认值作为
+#参数，如果字典中存在该键，则返回对应值，否则返回传入
+#的默认值
+def histogram(s): #定义一个字母计数器
+    d = dict()
+    for key in s:
+        d[key] = d.get(key, 0) +１　#注意这句
+    reutrn d
+
+for key in sorted(eng):
+    print (key, h[key])   #字典中的键是无序的，如果要以
+#确定的顺序遍历字典，可以使用内建方法sorted
+
+# reverse lookup of dice字典的逆向查找
+#即知道值，找对应的key
+#key是唯一的，但同一value所对应的key则可以是多个
+def reverse_lookup(d,v):
+    ''' d is dict ,v is value'''
+    for k in d:
+        if d[k] == v:
+            return k
+    raise LookupError() # if have no result ,return error
+
+def invert_dict(d):
+    inverse = dict()
+    for key in d:
+        val = d[key]
+        if val not in inverse:
+            inverse[val] = [key]
+        else:
+            inverse[val].append(key)
+    return inverse
+
+#用dict来作为备忘录
+know = {0 : 0 , 1 : 1} #首先填进去两个初始值，know为dict
+def fibonacci(n):
+    if n in know:
+        return know[n]
+    res = fibonacci(n-1) + fibonacci(n-2)
+    kown[n] = res
+    return res
+#第一遍的时候会跟一般的差不多，但第二次查询时要快得多
+
+been_called = True
+
+def example():
+    global been_called
+    been_called = False
+'''全局变量在外，def函数里的变量为局部变量，如果要在def
+函数中对全局变量赋值，必须先申明，如果不申明，只是在
+def函数中创造了同一个名字的局部变量，对全局变量没有影响，
+并在函数结束后，局部变量消失。
+'''
+
+#调试
+'''
+针对较大的数据集操作时的调试建议
+①缩小输入：减小数据集合的大小
+②检查摘要和类型：如，打印字典中项的数目，打印值的类型
+③编写自检代码：比较两种不同计算的结果，“一致性检验”
+④格式化输出：能够更容易定位一个错误
+
+
+#元组
+'''元祖是不可变的。元组是一组值的序列，值可为任意类型
+虽然非必须，但通常用括号括起来。
+使用单一元素创建元组时，需要在结尾处添加一个逗号。
+列表中的大多数操作符同样适用于元组，如t[0], t[2:5]
+'''
+t = tuple() # build a tuple
+#如果实参是一个序列（字符串，列表或者元组），结果将是
+#一个包含序列内元素的元组
+t = tuple('text') # ('t','e','x','t')
+#元组不可变，但可以用其他元组替换现有元组
+t = ('A',) + t[1:]
+#关系型可使用
+（0,1,20000） <  (0,2,1)  #按照顺序比
+a, b = b, a # 元组赋值， 参数数目必须一致
+addr = 'dsfasd@163.com'
+unmae, domain = addr.split('@')
+
+t = divmod(7,3) #(2,1) 返回一个包含商和余数的元组
+def min_max(t):
+    return min(t), max(t)  #返回一个元组
+    
+#输入可变长度参数
+def printall(*args)  # 以*开头的形参将输入的参数汇集
+#到一个元组中。
+    print（args)
+    
+#同时，也可起分散的作用，divmod()必须要有两个参数
+t = (7,3)
+#divmod(t） 是错的，但可以
+divmod(*t)
+s = 'abc'
+t = [ 0,1,2]
+zip(s,t) #接受两个或多个序列组，并返回一个元组列表
+#若创建的序列长度不一，返回对象的长度以最短序列的
+#长度为准
+
+def has_match(t1.t2):
+    for x,y in zip(t1,t2):
+        if x == y:
+            return True
+    return False
+    
+for index, element in enumerate('abc'):
+    print(index, element)
+#enumerate(序列),会遍历一个序列的索引号及其元素
+
+#字典和元组
+d = {}
+t = d.items() #会返回由多个元组组成的序列，每个元组
+#是一个键值对
+
+d = dict(zip('abc', range(3)))  # 创建一个字典
+
+directory[last, first]  = number #用元组作为键
+
+#调试
+'''
+列表、字典和元组都是数据结构。一些符合数据结构，如
+列表嵌套元组，等。使用时容易出现所谓的形状错误，也就是
+由于数据结构的类型大小或者结构问题而引发的错误
+think python提供了一个模块描述一个数据组的形状
+'''
+
+
+import string
+string.whitespace  #包括空格，制表符，新行等
+string.punctuation   #包括标点字符
+
+import random #
+random.random()  # 返回一个0~1.0之间的随机浮点数
+random.randint(low, high) #返回一个low和high之间的整数
+t = [1,2,3]
+random.choice(t)  #随机从t中选择
+#集合set，支持许多常见的集合操作
+
+#调试
+'''
+①细读：仔细阅读，是否达成期望
+②运行。修改和运行不同的版本
+③思考：错误的类型是什么？什么类型的错误能引起
+你看到的问题
+四小黄鸭调试法。将自己的问题解释出来。
+⑤回退：撤销最近修改，直到你回到一个能运行并且你
+能理解的程序，然后重建。
+'''
+
+#文件读取
+file = open('word.txt', 'w')
+#如果该文件存在，就用写入模式打开，并且会清空
+#原来的数据重新开始。
+#如果文件不存在，会创建一个新的文件。
+
+line1 = 'This is a demo'
+file.write(line1) #会返回一个值，是写入字符的个数
+#文件对象将跟踪自身的位置，下次调用时，会在文件末尾
+#添加新的数据
+
+cm = 42
+'%d' % cm   #'42'，格式化字符串
+
+#文件名和路径
+import os 
+cwd = os.getcwd()  #返回当前目录名称
+#以‘/'开头的叫做绝对路径 absolute path
+trace = os.path.abspath('memo.txt') #获得绝对路径
+os.path.exists('memo.txt') #检查一个文件或者目录是否存在
+os.path.isdir('memo.txt') #检查它是否是一个目录
+os.path.isfile('memo.txt')#检查是否是一个文件
+os.listdir(cwd) #返回给定目录下的文件列表
+
+def walk(dirname):
+	for name in os.listdir(name):
+		path = os.path.join(dirname, name):
+			if os.path.isfile(path):
+				print(path)
+			else:
+				walk(path)
+				
+
+os.path.join(目录， 文件名) #将两者合并成一个完整路径
+
+
+#捕获异常
+#输入输出错误 （ IOError)
+try:
+	fin = open('mo.text')
+except:
+	print('Error')
+	
+
+#数据库
+import dbm
+db = dbm.open('caption', 'c') #模式'c'表示如果数据不存在
+#则创建名为'caption'的数据库
+#其大多数操作类似于字典
+db['ch'] = 'phtot of ch'
+db.close()
+
+#序列化
+#dbm的限制在于键和值必须是字符串或者字节
+#pickle模块可以将几乎所有类型的对象转化为合适在
+#数据库中存储的字符串，以及将那些字符串还原
+import pickle
+t = [1,2,3]
+pickle.dumps(t)
+
+t2 = pickle.loads(t)
+#t 和t2值相等，但不相同
+
+
+#任何可以在命令行中启动的程序，也都可以在
+#python中通过管道对象（pipe object）来启动
+#一个管道代表一个正在运行的程序
+
+cmd = 'ls-l' 
+fp = os.popen(cmd)  #启动该命令
+res = fp.read()   #读取内容
+stat = fp.close()  # 关闭油管
+print（stat)    # 返回值一般为None,表示没有问题
+
+
+def check(filename):
+	cmd = 'md5sum' + filename
+	fp = os.popen(cmd)
+	res = fp.read()
+	stat = fp.close()
+	print (res) 
+
+#Unix系统中'md5sum'命令，来读取一个文件的内容并
+#计算出一个“校验和”
+
+#编写模块
+#任何包含python代码的文件，都可以作为模块被导入
+
+if __name__ == '__main__':
+	pass
+#__name__是一个在程序开始时设置好的内建变量
+#如果程序以脚本的形式运行，__name__的值为__main__
+#这时其中的代码将被执行，否则当被作为模块导入时，
+#其中的代码将会被跳过
+#若某模块已经导入，你再次导入，python不会做任何事
+#即使文件内容已经发生了改变
+
+#调试：
+'''
+当读写文件时，可能会遇到空白带来的问题。因为
+空格、制表符和换行符通常是看不见的
+可用'repr'函数来解决。
+它接受任意一个对象作为参数，然后返回一个该对象
+的字符串表示。对于空白符号，它将用反斜杠序列
+表示。
+不同的系统，会使用不同的符号来表示一行的结束，因此
+在不同的系统中移动文件，会导致差异。
+’‘’
+
+print(repr(s))
+
+
 
 
 
